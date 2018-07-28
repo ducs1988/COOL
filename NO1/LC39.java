@@ -32,21 +32,21 @@ class Solution {
         if (candidates == null || candidates.length == 0)
             return ans;
         
-        backtracking(ans, new ArrayList<Integer>(), 0, candidates, 0, target);
+        backtracking(ans, new ArrayList<Integer>(), candidates, 0, target);
         return ans;
     }
     
-    private void backtracking(List<List<Integer>> ans, List<Integer> list, int sum, int[] nums, int pos, int target) {
-        if (sum == target) {
+    private void backtracking(List<List<Integer>> ans, List<Integer> list, int[] nums, int pos, int target) {
+        if (target == 0) {
             ans.add(new ArrayList<Integer>(list));
             return;
         }
         
-        if (sum > target) return;
-        
         for (int i = pos; i < nums.length; i++) {
+            if (target < nums[i])
+                continue;
             list.add(nums[i]);
-            backtracking(ans, list, sum+nums[i], nums, i, target);
+            backtracking(ans, list, nums, i, target-nums[i]);
             list.remove(list.size()-1);
         }
     }
