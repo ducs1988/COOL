@@ -17,3 +17,13 @@ class Solution {
         return maxArea;
     }
 }
+
+/*
+Solution 1: Two Pointers
+set 2 pointers -> low & high
+{
+    1. calculation the current fill up area
+    2. update max area, base on step 1
+    3. compare low & high, move smaller one to next index
+} (Condition: low < high)
+*/
