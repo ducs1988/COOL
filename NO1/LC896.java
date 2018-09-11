@@ -8,7 +8,7 @@ An array A is monotone increasing if for all i <= j, A[i] <= A[j].  An array A i
 Return true if and only if the given array A is monotonic.
  */
 
-Class Solution {
+class Solution {
     public boolean isMonotonic(int[] A) {
         if (A == null || A.length == 1)
             return true;
