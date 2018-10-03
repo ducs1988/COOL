@@ -8,15 +8,8 @@
  * }
  */
 class Solution {
-    private class IntervalComparator implements Comparator<Interval> {
-        @Override
-        public int compare(Interval a, Interval b) {
-            return a.start < b.start ? -1 : a.start == b.start ? 0 : 1;
-        }
-    }
-    
     public List<Interval> merge(List<Interval> intervals) {
-        Collections.sort(intervals, new IntervalComparator());
+        Collections.sort(intervals, (a, b) -> a.start == b.start ? 0 : (a.start - b.start));
         List<Interval> list = new ArrayList<>();
         for (Interval interval : intervals) {
             if (list.size() == 0 || list.get(list.size()-1).end < interval.start)
