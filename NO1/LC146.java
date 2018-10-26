@@ -27,7 +27,7 @@ class LRUCache {
         if (!map.containsKey(key))
             return -1;
         
-        moveToTail(key);
+        move2least(key);
         return tail.val;
     }
     
@@ -56,10 +56,10 @@ class LRUCache {
         last.val = value;
         
         map.put(key, last);
-        moveToTail(key);
+        move2least(key);
     }
     
-    private void moveToTail(int key) {
+    private void move2least(int key) {
         ListNode curt = map.get(key);
         ListNode prev = curt.prev;
         ListNode next = curt.next;
