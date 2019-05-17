@@ -18,7 +18,7 @@ class Solution {
         int maxSum = nums[0];
         int maxCur = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            maxCur = maxCur < 0 ? nums[i] : maxCur + nums[i];
+            maxCur = Math.max(maxCur + nums[i], nums[i]);
             maxSum = Math.max(maxSum, maxCur);
         }
         return maxSum;
