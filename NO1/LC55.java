@@ -20,10 +20,12 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum
 
 class Solution {
     public boolean canJump(int[] nums) {
-        int reach = 0;
-        for (int i = 0; i <= reach && reach < nums.length - 1; i++) {
-            reach = Math.max(reach, i+nums[i]);
+        if (nums == null || nums.length == 0)
+            return true;
+        int pos = nums.length - 1;
+        for (int i = pos; i >= 0; i--) {
+            if (i + nums[i] >= pos) pos = i;
         }
-        return (reach + 1) >= nums.length;
+        return pos == 0;
     }
 }
