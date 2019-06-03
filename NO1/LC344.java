@@ -14,19 +14,17 @@ Output: "amanaP :lanac a ,nalp a ,nam A"
  */
 
 class Solution {
-    public String reverseString(String s) {
-        if (s == null || s.length() <= 1)
-            return s;
+    public void reverseString(char[] s) {
+        if (s == null || s.length <= 1)
+            return;
         
-        int low = 0, high = s.length() - 1;
-        char[] arr = s.toCharArray();
-        while (low < high) {
-            char ch = arr[low];
-            arr[low] = arr[high];
-            arr[high] = ch;
-            low++;
-            high--;
+        int l = 0, r = s.length - 1;
+        while (l < r) {
+            char tmp = s[l];
+            s[l] = s[r];
+            s[r] = tmp;
+            l++;
+            r--;
         }
-        return new String(arr);
     }
 }
