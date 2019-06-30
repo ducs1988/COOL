@@ -42,7 +42,7 @@ You may not alter the values in the list's nodes, only nodes itself may be chang
  	public ListNode reverseNextK(ListNode node, int k) {
  		ListNode next = node;
  		for (int i = 0; i < k; i++) {
- 			if (node.next == null)	return node;
+ 			if (next.next == null)	return next;
  			next = next.next;
  		}
 
