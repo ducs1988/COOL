@@ -20,3 +20,29 @@ class Solution {
         return list;
     }
 }
+
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null || intervals.length == 0)
+            return intervals;
+        
+        Arrays.sort(intervals, new Comparator<int[]>(){
+            public int compare(int[] a, int[] b) {
+                if (a[0] != b[0])
+                    return a[0] - b[0];
+                return a[1] - b[1];
+            }
+        });
+        List<int[]> list = new ArrayList<>();
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i-1][1] >= intervals[i][0]) {
+                intervals[i][0] = intervals[i-1][0];
+                intervals[i][1] = Math.max(intervals[i-1][1], intervals[i][1]);
+            } else {
+                list.add(intervals[i-1]);
+            }
+        }
+        list.add(intervals[intervals.length - 1]);
+        return list.toArray(new int[list.size()][]);
+    }
+}
