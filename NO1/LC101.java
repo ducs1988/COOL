@@ -1,4 +1,5 @@
 // Symmetric Tree
+// https://leetcode.com/problems/symmetric-tree/
 
 /**
  * Definition for a binary tree node.
@@ -13,21 +14,14 @@ class Solution {
     public boolean isSymmetric(TreeNode root) {
         if (root == null)
             return true;
-        return helper(root.left, root.right);
+        return dfs(root.left, root.right);
     }
     
-    private boolean helper(TreeNode left, TreeNode right) {
-        if (left == null && right == null)
+    private boolean dfs(TreeNode p, TreeNode q) {
+        if (p == null && q == null)
             return true;
-        if (left == null || right == null)
+        if (p == null || q == null)
             return false;
-        if (left.val != right.val)
-            return false;
-        
-        if (!helper(left.left, right.right))
-            return false;
-        if (!helper(left.right, right.left))
-            return false;
-        return true;
+        return p.val == q.val && dfs(p.left, q.right) && dfs(p.right, q.left);
     }
 }
