@@ -47,7 +47,7 @@ class Solution {
             int x = start[0];
             int y = start[1];
             int count = 0;
-            while (x >= 0 || y >= 0 || x < maze.length || y < maze[0].length || maze[x][y]==0) {
+            while (x >= 0 && y >= 0 && x < maze.length && y < maze[0].length && maze[x][y]==0) {
                 x += dir[0];
                 y += dir[1];
                 count++;
