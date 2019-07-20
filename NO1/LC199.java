@@ -30,7 +30,7 @@ class Solution {
 
             for (int i = 0; i < size; i++) {
                 TreeNode right = queue.poll();
-                if (i = 0) {
+                if (i == 0) {
                     list.add(right.val);
                 }
                 if (right.right != null) {
