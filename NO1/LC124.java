@@ -38,20 +38,21 @@ Output: 42
  * }
  */
 class Solution {
-    private int maxSum = Integer.MIN_VALUE;
-    
+    int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
-        dfs(root);
-        return maxSum;
+        findMaxSum(root);
+        return max;
     }
     
-    private int dfs(TreeNode node) {
+    private int findMaxSum(TreeNode node) {
         if (node == null)
             return 0;
-        int left = Math.max(dfs(node.left), 0);
-        int right = Math.max(dfs(node.right), 0);
-        int total = left + right + node.val;
-        maxSum = Math.max(maxSum, total);
-        return node.val + Math.max(left, right);
+        int left = Math.max(0, findMaxSum(node.left));
+        int right = Math.max(0, findMaxSum(node.right));
+        int sum = node.val + left + right;
+        
+        max = Math.max(max, sum);
+        
+        return Math.max(left, right) + node.val;
     }
 }
