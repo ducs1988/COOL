@@ -54,8 +54,8 @@ class Solution {
         while (!queue.isEmpty()) {
             int course = queue.poll();
             count++;
-            for (int i = 0; i < edges[i].size(); ++i) {
-                int prev = (int)edges[i].get(i);
+            for (int i = 0; i < edges[course].size(); ++i) {
+                int prev = (int)edges[course].get(i);
                 if (--degree[prev] == 0)
                     queue.offer(prev);
             }
